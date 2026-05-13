@@ -115,18 +115,18 @@ Prefer repository-pinned build tools:
 
 Check Maven Central, GitHub Advisories, OSV, and Snyk when the dependency affects runtime or build plugins.
 
-## Local checks after dependency changes
+## Optional local checks after dependency changes
 
-Run the local scanner:
+If the current environment already provides a trusted local supply-chain scanner, or the user explicitly approves installing/running one, use it as local machine evidence:
 
 ```sh
-/Users/jasonyu/workspace/Tools/supply-chain-scan/supply-chain-scan --path . --stores=false
+<local-supply-chain-scanner> --path . --stores=false
 ```
 
-If the user accepts OSV upload of package names and versions:
+If the scanner supports OSV or another network-backed provider, enable it only after the user accepts sending package names and versions:
 
 ```sh
-/Users/jasonyu/workspace/Tools/supply-chain-scan/supply-chain-scan --path . --stores=false --osv
+<local-supply-chain-scanner> --path . --stores=false --osv
 ```
 
 Use `--osv-all` only after explicit approval because it sends every discovered npm/PyPI package name and version to OSV.
@@ -148,6 +148,6 @@ Dependency changes:
 - Lockfile: <updated/not changed/not applicable>
 - Metadata checked: <license/repo/scripts/release age/maintainers summary>
 - Third-party checks: <OSV/Socket/Snyk/GitHub Advisories/npm audit result>
-- Local checks: <supply-chain-scan result and command>
+- Local checks: <local scanner result and command, or "not available">
 - Residual risk: <none known / specific caveat / user approval obtained>
 ```

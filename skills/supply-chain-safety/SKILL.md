@@ -33,23 +33,23 @@ Ask the user before proceeding if any of these are true:
 3. Inspect package metadata before installation or execution.
 4. Check trusted third-party sources first: OSV, Socket, Snyk or GitHub Advisories where available. Local tools are additional evidence, not authoritative.
 5. Install using the repo's pinned package manager and update lockfiles. Avoid global tools unless explicitly requested.
-6. Run security checks after the change. At minimum, run the local scanner when available.
+6. Run security checks after the change. Use a trusted local scanner only when one is already available in the environment or the user approves installing/running it.
 7. Final response must include dependency changes, lockfile status, third-party checks, local checks, and residual risk.
 
 ## Local scanner role
 
-Use `/Users/jasonyu/workspace/Tools/supply-chain-scan/supply-chain-scan` as local evidence for lockfiles, package-manager stores, cache traces, and IOC files. Do not present it as a complete vulnerability database.
+Use a trusted local scanner, if one is available in the current environment, as evidence for lockfiles, package-manager stores, cache traces, and IOC files. Do not present it as a complete vulnerability database.
 
-Recommended local check after dependency changes:
+Example local check shape after dependency changes:
 
 ```sh
-/Users/jasonyu/workspace/Tools/supply-chain-scan/supply-chain-scan --path . --stores=false
+<local-supply-chain-scanner> --path . --stores=false
 ```
 
-Only add `--osv` after confirming the user accepts sending package names and versions to OSV:
+Only add a network-backed option, such as OSV, after confirming the user accepts sending package names and versions to that service:
 
 ```sh
-/Users/jasonyu/workspace/Tools/supply-chain-scan/supply-chain-scan --path . --stores=false --osv
+<local-supply-chain-scanner> --path . --stores=false --osv
 ```
 
 ## Detailed references
