@@ -1,5 +1,7 @@
 # Supply Chain Safety Skill 中文说明
 
+[English README](README.md)
+
 这是一个可复用的 agent skill 和全局安全约束，用来让 agent 在新增依赖、升级依赖、执行包管理器命令、处理 lockfile、引入构建插件或代码生成器时，按供应链安全流程工作。
 
 它本身不是漏洞扫描器。它的作用是约束 agent 的行为：先检查包元数据，优先参考可信公开安全来源，在执行远程包代码前征求用户确认，保持 lockfile 可追溯，并在最终回复里说明残余风险。

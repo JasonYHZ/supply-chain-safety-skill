@@ -1,5 +1,7 @@
 # Supply Chain Safety Skill
 
+[中文说明](README_ZH.md)
+
 A reusable agent skill and global guardrail for safer dependency changes, package execution, lockfile handling, and supply-chain risk checks.
 
 This is not a vulnerability scanner by itself. It teaches agents how to handle dependency risk: inspect metadata, prefer trusted public security sources, ask before executing remote package code, preserve lockfiles, and report residual risk clearly.
